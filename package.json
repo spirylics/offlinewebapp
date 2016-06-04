@@ -1,0 +1,21 @@
+{
+  "name": "scotchy",
+  "version": "1.0.1",
+  "description": "Gulp Starter with Less",
+  "main": " ",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/scotch-io/gulp-and-less-starter-kit"
+  },
+  "author": "Nicholas Cerminara",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.8.10",
+    "gulp-filelist": "^0.4.0",
+    "gulp-filter": "^4.0.0"
+  }
+}

@@ -1,27 +1,29 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="offline-handler.html">
 
 <dom-module id="off-app">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]</h2>
-  </template>
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+        </style>
+        <h2>Cache</h2>
+        <offline-handler></offline-handler>
+    </template>
 
-  <script>
-    Polymer({
+    <script>
+        Polymer({
 
-      is: 'off-app',
+            is: 'off-app',
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'off-app',
-        },
-      },
+            properties: {
+                prop1: {
+                    type: String,
+                    value: 'off-app'
+                }
+            }
 
-    });
-  </script>
+        });
+    </script>
 </dom-module>

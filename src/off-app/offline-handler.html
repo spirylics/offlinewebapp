@@ -1,0 +1,60 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../../bower_components/paper-toast/paper-toast.html">
+<link rel="import" href="../../bower_components/paper-progress/paper-progress.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-flex-layout/iron-flex-layout.html">
+<link rel="import" href="../../bower_components/paper-icon-button/paper-icon-button.html">
+
+<dom-module id="offline-handler">
+
+    <template>
+        <style>
+            :host {
+                --paper-fab-background: var(--paper-light-blue-500);
+            }
+
+            .flex-horizontal {
+                @apply(--layout-horizontal);
+                @apply(--layout-center);
+            }
+
+            .flexchild {
+                @apply(--layout-flex);
+            }
+        </style>
+
+        <paper-fab icon="icons:offline-pin" on-tap="load"></paper-fab>
+        <paper-toast id="loader" duration="0">
+            <div class="container flex-horizontal">
+                <paper-progress class="flexchild" value="800" min="100" max="1000" class="red"></paper-progress>
+                <paper-icon-button icon="icons:close" title="close" on-click="close"></paper-icon-button>
+            </div>
+        </paper-toast>
+    </template>
+
+    <script>
+
+        Polymer({
+
+            is: 'offline-handler',
+
+            load: function () {
+                this.open();
+                $.getJSON("gen/offline.json").done(function (data) {
+                    console.log(data);
+                });
+            },
+
+            open: function () {
+                this.$.loader.open();
+            },
+
+            close: function () {
+                this.$.loader.close();
+            }
+        });
+
+    </script>
+
+</dom-module>
