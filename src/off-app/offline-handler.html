@@ -27,7 +27,8 @@
         <paper-fab icon="icons:offline-pin" on-tap="load"></paper-fab>
         <paper-toast id="loader" duration="0">
             <div class="container flex-horizontal">
-                <paper-progress class="flexchild" value="800" min="100" max="1000" class="red"></paper-progress>
+                <paper-progress id="progress" class="flexchild" value="{{progressValue}}" min="{{progressMin}}"
+                                max="{{progressMax}}"></paper-progress>
                 <paper-icon-button icon="icons:close" title="close" on-click="close"></paper-icon-button>
             </div>
         </paper-toast>
@@ -39,10 +40,33 @@
 
             is: 'offline-handler',
 
+            properties: {
+                progressValue: {
+                    type: Number,
+                    notify: true
+                },
+                progressMin: {
+                    type: Number,
+                    value: 0,
+                    readOnly: true
+                },
+                progressMax: {
+                    type: Number,
+                    notify: true
+                }
+            },
+
             load: function () {
                 this.open();
+                var self = this;
                 $.getJSON("gen/offline.json").done(function (data) {
-                    console.log(data);
+                    self.progressMax = data.length;
+                    self.progressValue = 0;
+                    $.each(data, function (index, value) {
+                        $.getq('offline-queue', value, function () {
+                            self.progressValue++;
+                        });
+                    });
                 });
             },
 

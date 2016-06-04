@@ -15,7 +15,7 @@ module.exports = {
             handler: 'cacheFirst',
             options: {
                 cache: {
-                    maxEntries: 200,
+                    maxEntries: 200000,
                     name: 'items-cache'
                 }
             }
@@ -25,7 +25,7 @@ module.exports = {
             handler: 'fastest',
             options: {
                 cache: {
-                    maxEntries: 100,
+                    maxEntries: 1000000,
                     name: 'data-cache'
                 }
             }
