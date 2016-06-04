@@ -1,0 +1,7 @@
+{
+  "name": "offlinewebapp",
+  "short_name": "offlinewebapp",
+  "description": "demo offline webapp",
+  "start_url": "/",
+  "display": "standalone"
+}
